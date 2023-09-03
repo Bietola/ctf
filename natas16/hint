@@ -1,0 +1,1 @@
+echo ac399edC0920 | sed -e s/0/a/g
