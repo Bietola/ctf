@@ -1,1 +1,1 @@
-['x', 'K', 'e', 'U', 'c', 'H', 'e', 'NUM', 's', 'B', 'N', 'k', 'b', 'V', 'h', 'NUM', 'r', 'u', 'NUM', 'K', 'S', 'i', 'B', 'NUM', 'U', 'U', 'l', 'M', 'i', 'NUM', 'S', 'D']
+sed -e s/1/a/g -e s/2/b/g -e s/3/c/g -e s/4/d/g -e s/5/e/g -e s/6/f/g -e s/7/g/g -e s/8/h/g -e s/9/i/g -e s/0/l/g
