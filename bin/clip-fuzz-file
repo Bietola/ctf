@@ -1,0 +1,5 @@
+#/bin/sh
+
+RT="$HOME/ctf"
+
+ls "$RT/assets/fuzz-files/" | dmenu | xargs -I{} cat "$RT/assets/fuzz-files/{}" | xclip -selection c
