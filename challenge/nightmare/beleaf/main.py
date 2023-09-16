@@ -1,0 +1,47 @@
+from textwrap import wrap
+from collections import defaultdict
+
+cypher_raw = '77000000660000007b0000005f0000006e000000790000007d000000ffffffff620000006c00000072000000ffffffffffffffffffffffffffffffffffffffffffffffff610000006500000069000000ffffffff6f00000074000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff67000000ffffffffffffffffffffffffffffffffffffffffffffffff75000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000000000000000000000000000'
+cypher = wrap(cypher_raw, 2)
+
+desired_raw = '010000000000000009000000000000001100000000000000270000000000000002000000000000000000000000000000120000000000000003000000000000000800000000000000120000000000000009000000000000001200000000000000110000000000000001000000000000000300000000000000130000000000000004000000000000000300000000000000050000000000000015000000000000002e000000000000000a0000000000000003000000000000000a000000000000001200000000000000030000000000000001000000000000002e0000000000000016000000000000002e000000000000000a0000000000000012000000000000000600000000000000';
+desired = wrap(desired_raw, 2)
+
+print(desired)
+
+def transform(param_1, cypher):
+    i = 0
+
+    while i != -1 and param_1 != int(cypher[i*4], 16):
+        if param_1 < int(cypher[i*4], 16):
+            i = i * 2 + 1
+        else:
+            i = (i + 1) * 2
+
+        if i*4 > len(cypher): return -1
+
+    return i
+
+print(chr(int('62', 16)))
+
+print(list(enumerate(map(lambda x: chr(int(x, 16)), cypher[:44:4]))));
+
+codec = defaultdict(lambda: 'NA')
+for c in 'abcdefghilmnopqrstjkluvxyz_{}':
+    if (r := transform(ord(c), cypher)) != -1:
+        codec[r] = c
+
+print(codec)
+
+print()
+print()
+print()
+
+for d in desired[::8]:
+    dd = int(d, 16)
+    print(f'{dd}: {codec[dd]}')
+
+# print(transform(
+#     'b',
+#     cypher
+# ))

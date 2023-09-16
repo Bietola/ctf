@@ -1,0 +1,1 @@
+awk '{print $2}' tmp | tr -d '\n'
