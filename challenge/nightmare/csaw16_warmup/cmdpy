@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+CODE="${1:?"Code required"}"
+python -c "from pwn import *; import sys; write = lambda s: sys.stdout.buffer.write(s); $CODE"
