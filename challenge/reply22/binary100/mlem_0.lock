@@ -1,9 +1,9 @@
 #Ghidra Lock File
-#Sat Sep 16 11:21:58 CEST 2023
+#Sun Sep 17 11:47:30 CEST 2023
 <META>\ Supports\ File\ Channel\ Locking=Channel Lock
 Hostname=backgammon
 OS\ Architecture=amd64
 OS\ Name=Linux
 OS\ Version=6.1.51-1-MANJARO
-Timestamp=9/16/23, 11\:21\u202FAM
+Timestamp=9/17/23, 11\:47\u202FAM
 Username=dincio
