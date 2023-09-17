@@ -3,6 +3,7 @@ section .data
 hello db 'Hello world!!',0
 
 section .text
+
 global _start
 
 put_str:
@@ -11,7 +12,7 @@ put_str:
     mov rax, 1     ; sys_write
     mov rdi, 1
     mov rsi, rbx
-    mov rdx, 14    ; TODO: Make variable
+    mov rdx, 14    ; TODO: Make this variablevariable
     syscall
 
     ret
