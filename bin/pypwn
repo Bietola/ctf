@@ -7,12 +7,15 @@ import sys
 def write(bs):
     sys.stdout.buffer.write(bs)
 
-def cli(cmd, interactive=False, elf_file=None):
+def cli(cmd, interactive=False, elf_file=None, write_output=False):
     if elf_file:
         context.binary = ELF(elf_file)
         p = process(elf_file)
 
-    exec(cmd)
+    if write_output:
+        exec(f'write({cmd})')
+    else:
+        exec(cmd)
 
     if interactive:
         if not elf_file:
