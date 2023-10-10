@@ -1,0 +1,29 @@
+import sys
+from pwn import *
+
+# elf = context.binary = ELF('./keycheck_baby')
+# p = process()
+
+babuzz = 'babuzz' * 10
+magic0 = Path('./magic0').read_text().split()
+magic1 = Path('./magic1').read_text().split()
+key = ''.join(map(
+    chr,
+    (int(x,16)^ord(y) for x,y in zip(magic0, babuzz))
+))
+# payload = b'x'*0x5 + f'flag{{{key}}}'.encode('utf-8')
+print(f'flag{{{key}}}'.encode('utf-8'))
+
+acc_69 = -69 + y[0]        = magic[0]
+acc_69 = -69 + y[0] + y[1] = magic[1]
+acc_69 = -69 + y[0] + y[1] + y[2] = magic[1]
+acc_69 = -69 + y[0] + y[1] = magic[1]
+acc_69 = -69 + y[0] + y[1] = magic[1]
+
+magic[0] = -69 + sum(range(0, 1))
+...
+magic[n] = -69 + sum(y[i] for i in range(0, n+1))
+
+# p.sendline(payload)
+
+# sys.stdout.buffer.write(payload)

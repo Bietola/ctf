@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 
+import sys
 import fire
 from pwn import *
-import sys
+from keystone import *
 
 def write(bs):
     sys.stdout.buffer.write(bs)
 
 def cli(cmd, interactive=False, elf_file=None, write_output=False):
+    ks = Ks(KS_ARCH_X86, KS_MODE_64)
+
+    def kasm(code):
+        return bytes(ks.asm(code)[0])
+
     if elf_file:
         context.binary = ELF(elf_file)
         p = process(elf_file)

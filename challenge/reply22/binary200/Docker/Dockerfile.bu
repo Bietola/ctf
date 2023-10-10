@@ -6,10 +6,8 @@ RUN useradd -m ctf
 
 WORKDIR /home/ctf
 
-RUN mkdir /home/ctf/usr
-
 RUN cp -R /lib* /home/ctf && \
-    cp -R /usr/lib* /home/ctf/usr
+    cp -R /usr/lib* /home/ctf
 
 RUN mkdir /home/ctf/dev && \
     mknod /home/ctf/dev/null c 1 3 && \
